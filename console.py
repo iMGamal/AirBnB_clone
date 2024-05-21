@@ -12,3 +12,4 @@ class Step:
     def area(self):
         """RETURN string."""
         return f"area = {self.height} * {self.weight}"
+
