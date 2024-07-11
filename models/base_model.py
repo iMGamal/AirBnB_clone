@@ -5,6 +5,7 @@
 import uuid
 import datetime
 
+
 class BaseModel:
     """Class of the base model."""
 
@@ -15,17 +16,18 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def __str__(self):
-        """Returns string representation."""
+        """Return string representation."""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Saves updates of upadates_at attribute."""
+        """Save updates of upadates_at attribute."""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """Returns dictionary representation."""
+        """Return dictionary representation."""
         base_dict = self.__dict__.copy()
         base_dict["__class__"] = self.__class__.__name__
         base_dict["created_at"] = self.created_at.datetime.isoformat()
         base_dict["updated_at"] = self.updated_at.datetime.isoformat()
         return base_dict
+
