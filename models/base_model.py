@@ -30,4 +30,3 @@ class BaseModel:
         base_dict["created_at"] = self.created_at.datetime.isoformat()
         base_dict["updated_at"] = self.updated_at.datetime.isoformat()
         return base_dict
-
