@@ -9,11 +9,21 @@ from datetime import datetime
 class BaseModel:
     """Class of the base model."""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Class constructor."""
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if not kwargs:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+        else:
+            for i, j in kwargs.items():
+                while i != "__class__":
+                    if i == "created_at":
+                        self.created_at = datetime.fromisoformat(j)
+                    elif i == "updated_at":
+                        self.updated_at = datetime.fromisoformat(j)
+                    else:
+                        setattr(self, i, j)
 
     def __str__(self):
         """Return string representation."""
