@@ -17,7 +17,7 @@ class BaseModel:
             self.updated_at = datetime.now()
         else:
             for i, j in kwargs.items():
-                while i != "__class__":
+                if i != "__class__":
                     if i == "created_at":
                         self.created_at = datetime.fromisoformat(j)
                     elif i == "updated_at":
@@ -30,7 +30,7 @@ class BaseModel:
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Save updates of upadates_at attribute."""
+        """Save updates of upadated_at attribute."""
         self.updated_at = datetime.now()
 
     def to_dict(self):
