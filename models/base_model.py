@@ -8,17 +8,17 @@ class BaseModel:
     """Class of project."""
     def __init__(self, *args, **kwargs):
         """Class constructor."""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if not kwargs:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key in ('created_at', 'updated_at'):
                         setattr(self, key, datetime.datetime.fromisoformat(value))
-        else:
-            setattr(self, key, value)
-
+                    else:
+                        setattr(self, key, value)
 
     def __str__(self):
         """Returns string representation."""
