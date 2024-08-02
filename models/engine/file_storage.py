@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Storing saved models."""
-from base_model import BaseModel
+from models.base_model import BaseModel
 import json
 import os
 
