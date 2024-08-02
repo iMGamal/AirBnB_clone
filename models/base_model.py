@@ -2,6 +2,7 @@
 """Gather data for each model."""
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -27,6 +28,7 @@ class BaseModel:
     def save(self):
         """Updates updated_at attribute."""
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Converts input into dictionary."""
